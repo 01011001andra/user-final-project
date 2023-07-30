@@ -4,7 +4,7 @@ const Layout = ({ bg, children, className }) => {
   return (
     <>
       <div className={`${bg && "bg-teritiary"} `}>
-        <div className={`container mx-auto px-2 min-h-screen ${className}`}>
+        <div className={`container mx-auto px-4 min-h-screen ${className}`}>
           {children}
         </div>
       </div>

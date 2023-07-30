@@ -34,7 +34,10 @@ const Beranda = () => {
         </div>
       </Layout>
       {/* Section 2 */}
-      <Layout bg={true} className="py-[48px] flex flex-col gap-10">
+      <Layout
+        bg={true}
+        className="py-[48px] flex flex-col gap-10  min-h-screen"
+      >
         <h1 className={`${headSubText} text-center `}>Acara</h1>
         <div className="flex flex-col justify-between h-screen gap-5 lg:flex-row">
           <div className="flex flex-col gap-[36px] lg:gap-[96px] w-full  lg:w-1/2 justify-center">
@@ -93,7 +96,8 @@ const Beranda = () => {
       </Layout>
       <Layout
         bg={true}
-        className="py-[48px] flex flex-col h-screen gap-6 lg:gap-16"
+        className="py-[48px] flex flex-col h-screen gap-6 lg:gap-16 
+        "
       >
         <h1 className={`${headSubText} text-center`}>Ceramah</h1>
 
