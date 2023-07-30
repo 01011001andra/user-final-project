@@ -10,9 +10,9 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="w-full h-24">
+    <div className="w-full h-24 absolute top-0 left-0 z-10">
       <div className="container h-full mx-auto navbar bg-base-100">
-        <div className="navbar-start">
+        <div className="navbar-start w-full lg:w-1/2">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
               <svg
