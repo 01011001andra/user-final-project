@@ -5,6 +5,7 @@ import { headSubText } from "../../utils/styles";
 import { TabelKas } from "./components";
 import Iframe from "react-iframe";
 import { Link } from "react-router-dom";
+import { Link as LinkScroll } from "react-scroll";
 import ReactPdf from "./components/ReactPdf";
 const Beranda = () => {
   const { data: kasData, isError: kasIsErr, error: kasErr } = useGetKas();
@@ -27,7 +28,17 @@ const Beranda = () => {
                 Senjulung Rt 02 Rw 10
               </p>
               <div>
-                <button className="btn bg-highlight">Lihat Acara</button>
+                <LinkScroll
+                  activeClass="active"
+                  to="acara"
+                  spy={true}
+                  smooth={true}
+                  offset={50}
+                  duration={500}
+                  className="btn bg-highlight"
+                >
+                  Lihat Acara
+                </LinkScroll>
               </div>
             </div>
           </div>
@@ -35,11 +46,12 @@ const Beranda = () => {
       </Layout>
       {/* Section 2 */}
       <Layout
+        id="acara"
         bg={true}
         className="py-[48px] flex flex-col gap-10  min-h-screen"
       >
         <h1 className={`${headSubText} text-center `}>Acara</h1>
-        <div className="flex flex-col justify-between h-screen gap-5 lg:flex-row">
+        <div className="flex flex-col justify-between min-h-screen gap-5 lg:flex-row">
           <div className="flex flex-col gap-[36px] lg:gap-[96px] w-full  lg:w-1/2 justify-center">
             <div className="flex flex-col gap-6 text-lg lg:text-2xl">
               <p>Assalamualaikum wr.wb</p>
@@ -84,7 +96,7 @@ const Beranda = () => {
             </div>
           </div>
           <div className="hidden h-full bg-black border border-black lg:flex"></div>
-          <div className="w-full h-full bg-slate-600 lg:w-1/2">
+          <div className="w-full h-screen bg-slate-600 lg:w-1/2">
             <ReactPdf />
           </div>
         </div>

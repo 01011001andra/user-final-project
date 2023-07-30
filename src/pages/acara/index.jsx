@@ -1,6 +1,6 @@
 import React from "react";
 import { Layout, MainLayout } from "../../layouts";
-import { Card } from "./components";
+import { Card, RutinitasCard } from "./components";
 
 const Acara = () => {
   return (
@@ -24,8 +24,8 @@ const Acara = () => {
               Acara masjid Al-Ihsan
             </h1>
             <div className="sticky top-0 right-0 flex flex-col w-full gap-5">
-              <Card />
-              <Card />
+              <Card bg={true} />
+              <RutinitasCard />
             </div>
           </div>
         </div>
