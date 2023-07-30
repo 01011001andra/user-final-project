@@ -14,7 +14,7 @@ const Beranda = () => {
       {/* Section 1 */}
       <Layout className="z-0">
         <div className="min-h-screen pt-24 hero lg:pt-10 2xl:pt-5 bg-main">
-          <div className="hero-content  flex-col gap-[52px] lg:flex-row-reverse ">
+          <div className="hero-content  flex-col gap-16 lg:gap-[52px] lg:flex-row-reverse ">
             <img
               src="./beranda-hero.png"
               className="max-w-xs border-4 rounded-lg shadow-2xl lg:max-w-md border-stroke"
@@ -82,7 +82,7 @@ const Beranda = () => {
           </div>
           <div className="hidden h-full bg-black border border-black lg:flex"></div>
           <div className="w-full h-full bg-slate-600 lg:w-1/2">
-            <div className="w-full">asd</div>
+            <ReactPdf />
           </div>
         </div>
       </Layout>
@@ -106,9 +106,6 @@ const Beranda = () => {
         <Link to="/ceramah" className="text-xl font-bold text-end">
           Selengkapnya...
         </Link>
-      </Layout>
-      <Layout>
-        <ReactPdf />
       </Layout>
     </MainLayout>
   );
