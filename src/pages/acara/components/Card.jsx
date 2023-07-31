@@ -18,7 +18,7 @@ const Card = ({ bg, id = 1 }) => {
       <HashLink
         to={`${bg ? "/#acara" : `/acara/${id}`}`}
         className={`flex items-center justify-center py-5 text-white rounded-md ${
-          bg ? "bg-white font-bold text-black" : "bg-stroke"
+          bg ? "bg-white font-bold text-stroke" : "bg-stroke"
         }`}
       >
         {bg ? "LIHAT UNDANGAN" : "LIHAT DOKUMENTASI ACARA"}
