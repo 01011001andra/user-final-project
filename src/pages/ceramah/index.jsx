@@ -17,8 +17,17 @@ const Ceramah = () => {
           <h1 className={`text-2xl font-bold `}>
             Ceramah & Khotbah Masjid AL-IHSAN
           </h1>
-          <CardVideo />
-          <CardVideo />
+          {ceramahData?.data?.map((item) => {
+            return (
+              <CardVideo
+                key={item.id}
+                penceramah={item.penceramah}
+                judul={item.judul}
+                embed={item.embed}
+                tanggal={item.tanggal}
+              />
+            );
+          })}
         </div>
       </Layout>
     </MainLayout>
