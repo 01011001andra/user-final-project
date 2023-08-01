@@ -1,5 +1,7 @@
 import axios from "axios";
 import moment from "moment";
+import "moment/locale/id";
+moment.locale("id");
 
 // undangan
 export const undanganClient = axios.create({
@@ -17,7 +19,7 @@ export const keuanganClient = axios.create({
 // format date
 
 export const formatTanggal = (tanggal) => {
-  return moment.unix(tanggal).format("DD MMM YYYY");
+  return moment.unix(tanggal).format("dddd, DD MMM YYYY");
 };
 
 export const formatUnixToTanggal = (tanggal) => {

@@ -1,14 +1,25 @@
 import React from "react";
 import { Layout, MainLayout } from "../../layouts";
-import useGetKas from "../../lib/keuangan/useGetKas";
 import { headSubText } from "../../utils/styles";
-import { TabelKas } from "./components";
+import { TabelKas, Undangan } from "./components";
 import Iframe from "react-iframe";
 import { Link } from "react-router-dom";
 import { Link as LinkScroll } from "react-scroll";
 import ReactPdf from "./components/ReactPdf";
+import { useGetCeramah, useGetKas, useGetUndangan } from "../../lib";
+
 const Beranda = () => {
   const { data: kasData, isError: kasIsErr, error: kasErr } = useGetKas();
+  const {
+    data: undanganData,
+    isError: undanganIsErr,
+    error: undanganErr,
+  } = useGetUndangan();
+  const {
+    data: ceramahData,
+    isError: ceramahIsErr,
+    error: ceramahErr,
+  } = useGetCeramah();
 
   return (
     <MainLayout title="Beranda">
@@ -45,62 +56,28 @@ const Beranda = () => {
         </div>
       </Layout>
       {/* Section 2 */}
-      <Layout
-        id="acara"
-        bg={true}
-        className="py-[48px] flex flex-col gap-10  min-h-screen"
-      >
-        <h1 className={`${headSubText} text-center `}>Acara</h1>
-        <div className="flex flex-col justify-between min-h-screen gap-5 lg:flex-row">
-          <div className="flex flex-col gap-[36px] lg:gap-[96px] w-full  lg:w-1/2 justify-center">
-            <div className="flex flex-col gap-6 text-lg lg:text-2xl">
-              <p>Assalamualaikum wr.wb</p>
-              <p>
-                Dengan ini kami mengundang seluruh masyarakat yang berada di
-                lingkungan masjid AL-IHSAN agar menghadiri kegiatan yang akan
-                diadakan pada:
-              </p>
-              <table className="w-full">
-                <tbody>
-                  <tr>
-                    <td>Hari, Tanggal</td>
-                    <td>: Kamis, 23 Mei 2002</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td>Waktu</td>
-                    <td>: Ba’da isya s/d Selesai</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td>Tempat</td>
-                    <td>: Masjid AL-IHSAN</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
+      {!undanganData?.data?.length == 0 && (
+        <Layout
+          id="acara"
+          bg={true}
+          className="py-[48px] flex flex-col gap-10  min-h-screen"
+        >
+          <h1 className={`${headSubText} text-center `}>Acara</h1>
+          <div className="flex flex-col justify-between min-h-screen gap-5 lg:flex-row">
+            <div className="flex flex-col gap-[36px] lg:gap-[96px] w-full  lg:w-1/2 justify-center">
+              <Undangan
+                getData={undanganData?.data[0]}
+                isError={undanganIsErr}
+                error={undanganErr}
+              />
             </div>
-            <div className="mx-auto">
-              <button className="text-white border-none btn bg-stroke">
-                UNDUH SURAT UNDANGAN
-              </button>
+            <div className="hidden h-full bg-black border border-black lg:flex"></div>
+            <div className="w-full h-screen bg-slate-600 lg:w-1/2">
+              <ReactPdf />
             </div>
           </div>
-          <div className="hidden h-full bg-black border border-black lg:flex"></div>
-          <div className="w-full h-screen bg-slate-600 lg:w-1/2">
-            <ReactPdf />
-          </div>
-        </div>
-      </Layout>
+        </Layout>
+      )}
       {/* Section 3 */}
       <Layout className="py-[48px] flex flex-col  gap-16">
         <h1 className={`${headSubText} text-center `}>KAS MASJID</h1>
@@ -112,9 +89,8 @@ const Beranda = () => {
         "
       >
         <h1 className={`${headSubText} text-center`}>Ceramah</h1>
-
         <Iframe
-          url="https://www.youtube.com/embed/bmH4rmkvnEI"
+          url={ceramahData?.data[0]?.embed}
           className="w-full h-full rounded-2xl"
           display="block"
           position="relative"
