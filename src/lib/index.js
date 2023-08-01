@@ -5,5 +5,4 @@ export * from "./infak";
 
 export * from "./infak";
 
-
 export * from "./dokumentasi";
