@@ -1,9 +1,15 @@
 import React from "react";
 import { Layout, MainLayout } from "../../layouts";
-import { headSubText } from "../../utils/styles";
+import { useGetCeramah } from "../../lib";
 import CardVideo from "./components/CardVideo";
 
 const Ceramah = () => {
+  const {
+    data: ceramahData,
+    isError: ceramahIsErr,
+    error: ceramahErr,
+  } = useGetCeramah();
+
   return (
     <MainLayout title="Ceramah">
       <Layout className="py-28">
