@@ -1,8 +1,8 @@
 import React from "react";
 import { Loading } from "../../components";
 import { Layout, MainLayout } from "../../layouts";
+import { useGetInfak } from "../../lib";
 import useGetKas from "../../lib/keuangan/useGetKas";
-import { headSubText } from "../../utils/styles";
 import { InfakCard, TabelKas } from "./components";
 
 const Keuangan = () => {
@@ -12,7 +12,12 @@ const Keuangan = () => {
     error: dataErr,
     isLoading: dataIsLoad,
   } = useGetKas();
-
+  const {
+    data: infakData,
+    isError: infakIsErr,
+    error: infakErr,
+    isLoading: infakIsLoad,
+  } = useGetInfak();
   return (
     <MainLayout title="Keuangan & Infak">
       <Layout bg={true} className="flex flex-col justify-center py-28">
@@ -28,9 +33,21 @@ const Keuangan = () => {
           LAYANAN E-INFAK MASJID AL-IHSAN
         </h1>
         <div class="w-full grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 ">
-          <InfakCard bg={true} />
-          <InfakCard />
-          <InfakCard />
+          {infakIsLoad ? (
+            <Loading loadingName="Layanan E-Infak" />
+          ) : (
+            infakData?.data?.map((item) => {
+              return (
+                <InfakCard
+                  nama_infak={item.nama_infak}
+                  no_rek={item.no_rek}
+                  penerima={item.penerima}
+                  deskripsi={item.deskripsi}
+                  bg={item.prioritas}
+                />
+              );
+            })
+          )}
         </div>
       </Layout>
     </MainLayout>

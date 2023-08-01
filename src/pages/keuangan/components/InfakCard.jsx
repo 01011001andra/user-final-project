@@ -1,6 +1,6 @@
 import React from "react";
 
-const InfakCard = ({ bg }) => {
+const InfakCard = ({ bg, nama_infak, no_rek, penerima, deskripsi }) => {
   return (
     <div
       className={` rounded-2xl ${
@@ -16,13 +16,10 @@ const InfakCard = ({ bg }) => {
           className={`${!bg && "border-2 border-stroke rounded-xl"}`}
         />
       </div>
-      <h1>E-INFAK ANAK YATIM</h1>
-      <span>No rek. 7231965558</span>
-      <span>A.N Yandra Muslim</span>
-      <p>
-        Uang infak akan dibagikan setiap tahun kepada anak-anak yatim yang
-        berada dikawasan masjid Al-Ihsan.
-      </p>
+      <h1 className="uppercase">{nama_infak}</h1>
+      <span>No rek. {no_rek}</span>
+      <span>A.N {penerima}</span>
+      <p>{deskripsi}</p>
     </div>
   );
 };
