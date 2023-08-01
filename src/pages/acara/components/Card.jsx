@@ -1,7 +1,7 @@
 import React from "react";
 import { HashLink } from "react-router-hash-link";
 
-const Card = ({ bg, id = 1, getData = [], isError, error }) => {
+const Card = ({ bg, id, getData = [], isError, error }) => {
   return (
     <div
       className={`w-full border-8 rounded-md border-stroke  p-[26px] flex flex-col gap-5 shadow-xl ${
