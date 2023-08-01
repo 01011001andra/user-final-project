@@ -15,6 +15,7 @@ const Acara = () => {
     isError: undanganIsErr,
     error: undanganErr,
   } = useGetUndangan();
+
   return (
     <MainLayout title="Acara">
       <Layout>
@@ -34,7 +35,9 @@ const Acara = () => {
               Acara masjid Al-Ihsan
             </h1>
             <div className="sticky top-0 right-0 flex flex-col w-full gap-5">
-              <Card bg={true} getData={undanganData?.data[0]} />
+              {undanganData?.data?.length === 0 ? null : (
+                <Card bg={true} getData={undanganData?.data[0]} />
+              )}
               <RutinitasCard />
             </div>
           </div>
