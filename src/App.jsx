@@ -1,5 +1,6 @@
 import React, { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
+import { Loading } from "./components";
 
 const Beranda = lazy(() => import("./pages/beranda"));
 const Acara = lazy(() => import("./pages/acara"));
@@ -9,7 +10,9 @@ const DetailAcara = lazy(() => import("./pages/detailAcara"));
 
 const App = () => {
   return (
-    <Suspense fallback={<h1>Loading...</h1>}>
+    <Suspense
+      fallback={<Loading loadingName="Halaman" className="w-screen h-screen" />}
+    >
       <Routes>
         <Route path="/" element={<Beranda />} />
         <Route path="/acara" element={<Acara />} />

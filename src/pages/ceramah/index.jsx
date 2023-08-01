@@ -18,6 +18,7 @@ const Ceramah = () => {
             Ceramah & Khotbah Masjid AL-IHSAN
           </h1>
           <CardVideo />
+          <CardVideo />
         </div>
       </Layout>
     </MainLayout>
