@@ -1,8 +1,20 @@
 import React from "react";
 import { Layout, MainLayout } from "../../layouts";
+import { useGetDokumentasi, useGetUndangan } from "../../lib";
 import { Card, RutinitasCard } from "./components";
 
 const Acara = () => {
+  const {
+    data: dokumentasiData,
+    isError: dokumentasiIsErr,
+    error: dokumentasiErr,
+  } = useGetDokumentasi();
+
+  const {
+    data: undanganData,
+    isError: undanganIsErr,
+    error: undanganErr,
+  } = useGetUndangan();
   return (
     <MainLayout title="Acara">
       <Layout>
@@ -12,11 +24,9 @@ const Acara = () => {
               Dokumentasi Acara
             </h1>
             <div className="flex flex-col gap-5">
-              <Card />
-              <Card />
-              <Card />
-              <Card />
-              <Card />
+              {dokumentasiData?.data.map((item) => {
+                return <Card key={item.id} getData={item} />;
+              })}
             </div>
           </div>
           <div className="relative flex flex-col w-full gap-5 lg:w-1/2">
@@ -24,7 +34,7 @@ const Acara = () => {
               Acara masjid Al-Ihsan
             </h1>
             <div className="sticky top-0 right-0 flex flex-col w-full gap-5">
-              <Card bg={true} />
+              <Card bg={true} getData={undanganData?.data[0]} />
               <RutinitasCard />
             </div>
           </div>
