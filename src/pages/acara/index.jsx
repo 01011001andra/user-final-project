@@ -25,7 +25,7 @@ const Acara = () => {
             </h1>
             <div className="flex flex-col gap-5">
               {dokumentasiData?.data.map((item) => {
-                return <Card key={item.id} getData={item} />;
+                return <Card key={item.id} getData={item} id={item.id} />;
               })}
             </div>
           </div>

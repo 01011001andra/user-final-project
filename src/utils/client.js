@@ -24,3 +24,7 @@ export const getUndangan = () => {
 export const getDokumentasi = () => {
   return undanganClient.get(`/dokumentasi_acara`);
 };
+// dokumentasi Acara by id
+export const getDokumentasiById = (id) => {
+  return undanganClient.get(`/dokumentasi_acara/${id}`);
+};
