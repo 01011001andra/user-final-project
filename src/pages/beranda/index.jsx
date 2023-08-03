@@ -1,11 +1,10 @@
 import React from "react";
 import { Layout, MainLayout } from "../../layouts";
 import { headSubText } from "../../utils/styles";
-import { TabelKas, Undangan } from "./components";
+import { TabelKas, Undangan, ReactPdf, SwiperPengurus } from "./components";
 import Iframe from "react-iframe";
 import { Link } from "react-router-dom";
 import { Link as LinkScroll } from "react-scroll";
-import ReactPdf from "./components/ReactPdf";
 import { useGetCeramah, useGetKas, useGetUndangan } from "../../lib";
 
 const Beranda = () => {
@@ -56,6 +55,11 @@ const Beranda = () => {
         </div>
       </Layout>
       {/* Section 2 */}
+      <Layout className="py-[48px] min-h-0 flex flex-col gap-8">
+        <h1 className="text-2xl font-bold text-center">Pengurus Masjid</h1>
+        <SwiperPengurus />
+      </Layout>
+      {/* Section 3 */}
       {!undanganData?.data?.length == 0 && (
         <Layout
           id="acara"
