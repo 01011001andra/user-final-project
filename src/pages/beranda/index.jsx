@@ -55,10 +55,12 @@ const Beranda = () => {
         </div>
       </Layout>
       {/* Section 2 */}
-      <Layout className="py-[48px] min-h-0 flex flex-col gap-8">
-        <h1 className="text-2xl font-bold text-center">Pengurus Masjid</h1>
+      <div className="py-[48px] min-h-0 flex flex-col gap-8 container mx-auto">
+        <h1 className="text-2xl lg:text-3xl font-bold text-center">
+          Pengurus Masjid
+        </h1>
         <SwiperPengurus />
-      </Layout>
+      </div>
       {/* Section 3 */}
       {!undanganData?.data?.length == 0 && (
         <Layout
